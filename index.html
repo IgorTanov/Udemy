@@ -10,40 +10,57 @@
 
 <body>
     <script>
-        let numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?");
+        let numberOfFilms;
         let personalMovieDB = {
             count: numberOfFilms,
             movies: {},
             actors: {},
             genres: [],
+            private: false
 
         }
-        startInformation();
-        if(personalMovieDB.count<10){
-            confirm("Просмотрено довольно мало фильмов")
-        
-        } if((personalMovieDB.count>=10) & (personalMovieDB.count<=30)){
-            confirm("Вы классический зрител")
-        } if (personalMovieDB.count>30){
-            confirm("Вы киноман")
-        } else{
-            confirm("произошла ошибка")
+
+        function start() {
+            numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?");
+            while ((numberOfFilms == "") || (isNaN(numberOfFilms)) || (numberOfFilms == undefined)) {
+                numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?");
+
+            }
+            personalMovieDB.count = numberOfFilms;
         }
 
-        function startInformation() {
+
+        function detectUserLvl() {
+            if (personalMovieDB.count < 10) {
+                confirm("Просмотрено довольно мало фильмов")
+            } else
+            if ((personalMovieDB.count >= 10) & (personalMovieDB.count <= 30)) {
+                confirm("Вы классический зрител")
+            } else
+            if (personalMovieDB.count > 30) {
+                confirm("Вы киноман")
+            } else {
+                confirm("произошла ошибка")
+            }
+        }
+
+        function collectInformation() {
             for (let i = 0; i < 2; i++) {
                 film = prompt('Один из последних просмотренных фильмов?');
-                if ((film === "") || (film.length >= 50) || (film == false)) {
-                    startInformation();
-                    break;
+                while ((film === "") || (film == undefined) || (film.length >= 50)) {
+                    film = prompt('Один из последних просмотренных фильмов?');
                 }
                 value = prompt("Во сколько вы его оцениваете?");
-                if ((value === "") || (value.length >= 50) || (value == false)) {
-                    startInformation();
+                while ((value === "") || (value == undefined) || (value.length >= 50) || isNaN(value)) {
+                    value = prompt("Во сколько вы его оцениваете?");
                 }
+
                 personalMovieDB.movies[film] = value;
             }
         }
+        start();
+        collectInformation();
+        detectUserLvl();
     </script>
 </body>
 
