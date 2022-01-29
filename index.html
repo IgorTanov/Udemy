@@ -16,12 +16,33 @@
             movies: {},
             actors: {},
             genres: [],
-            
+
         }
-        for (let i = 0; i < 2; i++) {
-            film = prompt('Один из последних просмотренных фильмов?');
-            value = prompt("Во сколько вы его оцениваете?");
-           personalMovieDB.movies[film] = value;
+        startInformation();
+        if(personalMovieDB.count<10){
+            confirm("Просмотрено довольно мало фильмов")
+        
+        } if((personalMovieDB.count>=10) & (personalMovieDB.count<=30)){
+            confirm("Вы классический зрител")
+        } if (personalMovieDB.count>30){
+            confirm("Вы киноман")
+        } else{
+            confirm("произошла ошибка")
+        }
+
+        function startInformation() {
+            for (let i = 0; i < 2; i++) {
+                film = prompt('Один из последних просмотренных фильмов?');
+                if ((film === "") || (film.length >= 50) || (film == false)) {
+                    startInformation();
+                    break;
+                }
+                value = prompt("Во сколько вы его оцениваете?");
+                if ((value === "") || (value.length >= 50) || (value == false)) {
+                    startInformation();
+                }
+                personalMovieDB.movies[film] = value;
+            }
         }
     </script>
 </body>
