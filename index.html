@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-   <script src="script.js"></script>
+    <script>
+        let numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?");
+        let personalMovieDB = {
+            count: numberOfFilms,
+            movies: {},
+            actors: {},
+            genres: [],
+            
+        }
+        for (let i = 0; i < 2; i++) {
+            film = prompt('Один из последних просмотренных фильмов?');
+            value = prompt("Во сколько вы его оцениваете?");
+           personalMovieDB.movies[film] = value;
+        }
+    </script>
 </body>
+
 </html>
