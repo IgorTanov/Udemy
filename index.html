@@ -6,62 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+   
 </head>
 
 <body>
-    <script>
-        let numberOfFilms;
-        let personalMovieDB = {
-            count: numberOfFilms,
-            movies: {},
-            actors: {},
-            genres: [],
-            private: false
-
-        }
-
-        function start() {
-            numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?");
-            while ((numberOfFilms == "") || (isNaN(numberOfFilms)) || (numberOfFilms == undefined)) {
-                numberOfFilms = prompt("Сколько фильмов вы уже посмотрели?");
-
-            }
-            personalMovieDB.count = numberOfFilms;
-        }
-
-
-        function detectUserLvl() {
-            if (personalMovieDB.count < 10) {
-                confirm("Просмотрено довольно мало фильмов")
-            } else
-            if ((personalMovieDB.count >= 10) & (personalMovieDB.count <= 30)) {
-                confirm("Вы классический зрител")
-            } else
-            if (personalMovieDB.count > 30) {
-                confirm("Вы киноман")
-            } else {
-                confirm("произошла ошибка")
-            }
-        }
-
-        function collectInformation() {
-            for (let i = 0; i < 2; i++) {
-                film = prompt('Один из последних просмотренных фильмов?');
-                while ((film === "") || (film == undefined) || (film.length >= 50)) {
-                    film = prompt('Один из последних просмотренных фильмов?');
-                }
-                value = prompt("Во сколько вы его оцениваете?");
-                while ((value === "") || (value == undefined) || (value.length >= 50) || isNaN(value)) {
-                    value = prompt("Во сколько вы его оцениваете?");
-                }
-
-                personalMovieDB.movies[film] = value;
-            }
-        }
-        start();
-        collectInformation();
-        detectUserLvl();
-    </script>
+<script src="script.js"> </script>
 </body>
 
 </html>
